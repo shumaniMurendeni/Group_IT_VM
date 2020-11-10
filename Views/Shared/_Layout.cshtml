@@ -1,0 +1,41 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Layout</title>
+    <link href="~/Content/bootstrap-grid.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <style>
+        #DenForm {
+            float: right;
+            width: 30%;
+            padding: 1px;
+        }
+        #ItemForm {
+            float: left;
+            width:69%;
+            padding:1px;
+        }
+        #ItemInfo {
+            float:right;
+            width:30%;
+            border: 1px black dashed;
+            padding:2px;
+            background-color:#cac5c5
+        }
+    </style>
+</head>
+<body>
+    <div class="container container-body"> 
+        @RenderPage("_Header.cshtml")
+        @RenderBody() 
+    </div>
+</body>
+</html>

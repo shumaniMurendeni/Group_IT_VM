@@ -1,0 +1,33 @@
+﻿@model Group_IT_VM.Models.Denominations
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    AjaxOptions ajax = new AjaxOptions
+    {
+        HttpMethod = "POST",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "ItemInfo"
+    };
+}
+
+@using (Ajax.BeginForm("OnclickItem", "Denominations", ajax, new { id = "DenForm" }))
+{
+    @Html.AntiForgeryToken();
+
+    List<Group_IT_VM.Models.Denominations> denominations = new List<Group_IT_VM.Models.Denominations>();
+    denominations.Add(new Group_IT_VM.Models.Denominations(0, 0.5));
+    denominations.Add(new Group_IT_VM.Models.Denominations(1, 1));
+    denominations.Add(new Group_IT_VM.Models.Denominations(2, 2));
+    denominations.Add(new Group_IT_VM.Models.Denominations(3, 5));
+
+    var selected = false;
+
+    foreach (var den in denominations)
+    {
+
+        @Html.RadioButton("DenomNumer", den.ID, false)
+        @Html.Label(den.toString())
+        <br />
+    }
+    <input type="submit" id="Load_Credits" value="Load Credits" />
+
+}

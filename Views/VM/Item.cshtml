@@ -1,0 +1,33 @@
+﻿@using Vending_Machine.Models
+@model Tuple<List<Item>, Item>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken();
+
+    var selected = false;
+
+    foreach (var item in Model.Item1)
+    {
+        if (Model.Item2 == item)
+        {
+            selected = true;
+        }
+        else { selected = false; }
+
+        @Html.RadioButton("ItemNumer", item.ID, false);
+        @Html.Label(item.Name);
+        < br />
+    }
+    //<input type="submit" id="DisplayDetails" value="Display item details" />
+    <input type="submit" id="BuyItem" value="Buy Item" />
+}
+
+<!--Partial View to show Item Data-->
+
+<div id="ItemInfo">
+    @Html.Partial("ItemsDetails.cshtml", Model.Item2)
+</div>
